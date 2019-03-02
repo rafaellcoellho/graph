@@ -6,7 +6,7 @@ typedef struct node* link;
 
 typedef struct node 
 {
-    uint16_t item;
+    uint32_t item;
     link next;
 } node;
 
@@ -40,7 +40,7 @@ void LinkedList_Destroy(llist *self)
     free(self);
 }
 
-void LinkedList_Prepend(llist *self, uint16_t item)
+void LinkedList_Prepend(llist *self, uint32_t item)
 {
     link new_node = (link) malloc(sizeof(node));
     new_node->item = item;
@@ -50,7 +50,7 @@ void LinkedList_Prepend(llist *self, uint16_t item)
     self->size++;
 }
 
-void LinkedList_Append(llist *self, uint16_t item)
+void LinkedList_Append(llist *self, uint32_t item)
 {
     link new_node = (link) malloc(sizeof(node));
     new_node->item = item;
@@ -65,7 +65,7 @@ void LinkedList_Append(llist *self, uint16_t item)
     self->size++;
 }
 
-void LinkedList_DeleteItem(llist *self, uint16_t item)
+void LinkedList_DeleteItem(llist *self, uint32_t item)
 {
     if(self->size == 0) return;
 
@@ -119,10 +119,10 @@ uint32_t LinkedList_GetSize(llist *self)
     return self->size;
 }
 
-uint16_t LinkedList_Shift(llist *self)
+uint32_t LinkedList_Shift(llist *self)
 {
     if(LinkedList_IsEmpty(self)) return 0;
-    uint16_t item = self->head->item;
+    uint32_t item = self->head->item;
     link node = self->head;
     if(LinkedList_GetSize(self) == 1) {
         self->head = NULL;
