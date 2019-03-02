@@ -71,3 +71,36 @@ void Graph_Show(graph *self)
     }
     printf("End Graph.\n");
 }
+
+bool Graph_IsConnected(graph *self)
+{
+    llist *queue = LinkedList_Create();
+    bool visited[self->n_vertices];
+
+    for(uint32_t i = 1; i < self->n_vertices; i++) 
+        visited[i] = false;
+    
+    visited[0] = true;
+    LinkedList_Append(queue, 0);
+
+    uint32_t actual_vertex;
+    uint32_t *adjacents_actual_vertex;
+    while(LinkedList_IsEmpty(queue) == false) {
+        actual_vertex = LinkedList_Shift(queue);
+        adjacents_actual_vertex = LinkedList_Array(self->array_vertices[actual_vertex]);
+        for(uint32_t i = 0; i < LinkedList_GetSize(self->array_vertices[actual_vertex]); i++ ) {
+            uint32_t adjacent = adjacents_actual_vertex[i];
+            if (visited[adjacent] == false) {
+                visited[adjacent] = true;
+                LinkedList_Append(queue, adjacent);
+            }
+        }
+    }
+
+    for(uint32_t i = 0; i < self->n_vertices; i++) {
+        if(visited[i] == false) {
+            return false;
+        }
+    }
+    return true;
+}

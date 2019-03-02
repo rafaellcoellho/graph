@@ -134,3 +134,16 @@ uint32_t LinkedList_Shift(llist *self)
     self->size--;
     return item;
 }
+
+uint32_t *LinkedList_Array(llist *self)
+{
+    uint32_t *array = malloc(sizeof(uint32_t) * self->size);
+    link p_aux = self->head;
+
+    for(uint32_t i = 0; i < self->size; i++) {
+        array[i] = p_aux->item;
+        p_aux = p_aux->next;
+    }
+
+    return array;
+}

@@ -15,5 +15,6 @@ void LinkedList_Show(llist *self);
 bool LinkedList_IsEmpty(llist *self);
 uint32_t LinkedList_GetSize(llist *self);
 uint32_t LinkedList_Shift(llist *self);
+uint32_t *LinkedList_Array(llist *self);
 
 #endif // _LLIST_H
