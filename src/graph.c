@@ -54,7 +54,7 @@ void Graph_Destroy(graph *self)
 }
 
 void Graph_InsertEdge(graph *self, uint32_t source, uint32_t destiny) 
-{
+{   
     llist *s = self->array_vertices[source];
     llist *d = self->array_vertices[destiny];
 

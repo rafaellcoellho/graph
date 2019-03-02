@@ -11,7 +11,6 @@ int main(void)
   }
 
   Graph_InsertEdge(exemplo, 1, 2);
-  Graph_InsertEdge(exemplo, 2, 4);
   Graph_Show(exemplo);
 
   Graph_Destroy(exemplo);
